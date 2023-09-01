@@ -22,16 +22,19 @@ public class OSFirebasePerformance extends CordovaPlugin {
     private final static String KEY_ACTION_ADD_TRACE_ATTRIBUTE = "addTraceAttribute";
     private final static String KEY_ACTION_REMOVE_TRACE_ATTRIBUTE = "removeTraceAttribute";
     private final static String KEY_ACTION_INCREMENT_METRIC = "incrementMetric";
-    private final static String KEY_ACTION_SET_PERFORMANCE_COLLECTION_ENABLED = "setPerformanceCollectionEnabled";
+    private final static String KEY_ACTION_SET_PERFORMANCE_COLLECTION_ENABLED = "setPerformanceCollectionEnabled";    
+    private final static String KEY_ACTION_SET_TEST = "test";
 
     private Map<String, Trace> traces = new HashMap<String, Trace>();
 
     @Override
     public string execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals(KEY_ACTION_START_TRACE)) {
+        if (action.equals(KEY_ACTION_SET_TEST)) {            
+            return this.test(args, callbackContext);
+        }            
+        else if (action.equals(KEY_ACTION_START_TRACE)) {
             this.startTrace(args, callbackContext);
-            string test1 = this.test(args, callbackContext);
-            return test1;
+            return "true;
         }
         else if (action.equals(KEY_ACTION_STOP_TRACE)) {
             this.stopTrace(args, callbackContext);
