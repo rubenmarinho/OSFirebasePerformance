@@ -160,7 +160,7 @@ public class OSFirebasePerformance extends CordovaPlugin {
         FirebasePerformance.getInstance().setPerformanceCollectionEnabled(enabled);
     }
 
-    private string test(JSONArray args, CallbackContext callbackContext) {
+    private String test(JSONArray args, CallbackContext callbackContext) {
         String traceName = null;
         Trace trace = null;
         try {
