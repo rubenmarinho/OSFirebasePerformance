@@ -28,35 +28,36 @@ public class OSFirebasePerformance extends CordovaPlugin {
     private Map<String, Trace> traces = new HashMap<String, Trace>();
 
     @Override
-    public string execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+    public bool execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals(KEY_ACTION_SET_TEST)) {            
-            return this.test(args, callbackContext);
+           this.test(args, callbackContext);
+           return true;
         }            
         else if (action.equals(KEY_ACTION_START_TRACE)) {
             this.startTrace(args, callbackContext);
-            return "true";
+            return true;
         }
         else if (action.equals(KEY_ACTION_STOP_TRACE)) {
             this.stopTrace(args, callbackContext);
-            return "true";
+            return true;
         }
         else if (action.equals(KEY_ACTION_ADD_TRACE_ATTRIBUTE)) {
             this.addTraceAttribute(args, callbackContext);
-            return "true";
+            return true;
         }
         else if (action.equals(KEY_ACTION_REMOVE_TRACE_ATTRIBUTE)) {
             this.removeTraceAttribute(args, callbackContext);
-            return "true";
+            return true;
         }
         else if (action.equals(KEY_ACTION_INCREMENT_METRIC)) {
             this.incrementMetric(args, callbackContext);
-            return "true";
+            return true;
         }
         else if (action.equals(KEY_ACTION_SET_PERFORMANCE_COLLECTION_ENABLED)) {
             this.setPerformanceCollectionEnabled(args, callbackContext);
-            return "true";
+            return true;
         }
-        return "false";
+        return false;
     }
 
     private void startTrace(JSONArray args, CallbackContext callbackContext) {
@@ -164,10 +165,12 @@ public class OSFirebasePerformance extends CordovaPlugin {
         Trace trace = null;
         try {
             traceName = args.getString(0);
+            Log.e("traceName", args.getString(0));
         } catch (JSONException e) {
             Log.e("StartTrace", e.toString());
             return e.toString();
         }
+        
         if(!traceName.isEmpty()){
             if(traces.containsKey(traceName)){
                 trace = traces.get(traceName);
