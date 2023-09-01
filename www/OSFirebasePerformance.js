@@ -2,6 +2,11 @@ var exec = require('cordova/exec');
 var PLUGIN_NAME = "OSFirebasePerformance";
 
 module.exports = {
+    test: function (name) {
+        return new Promise(function (resolve, reject) {
+            exec(resolve, reject, PLUGIN_NAME, "test", [name]);
+        });
+    },
     startTrace: function (name) {
         return new Promise(function (resolve, reject) {
             exec(resolve, reject, PLUGIN_NAME, "startTrace", [name]);
