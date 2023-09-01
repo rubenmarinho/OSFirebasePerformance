@@ -28,7 +28,7 @@ public class OSFirebasePerformance extends CordovaPlugin {
     private Map<String, Trace> traces = new HashMap<String, Trace>();
 
     @Override
-    public bool execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals(KEY_ACTION_SET_TEST)) {            
            this.test(args, callbackContext);
            return true;
