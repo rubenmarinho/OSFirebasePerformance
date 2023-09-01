@@ -34,7 +34,7 @@ public class OSFirebasePerformance extends CordovaPlugin {
         }            
         else if (action.equals(KEY_ACTION_START_TRACE)) {
             this.startTrace(args, callbackContext);
-            return "true;
+            return "true";
         }
         else if (action.equals(KEY_ACTION_STOP_TRACE)) {
             this.stopTrace(args, callbackContext);
