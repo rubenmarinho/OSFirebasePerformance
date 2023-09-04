@@ -26,6 +26,8 @@ class FirebasePerformancePlugin {
         if !traceName.isEmpty {
             if let trace = traces[traceName] {
                 trace.stop()
+                let index = traces.firstIndex(of: traceName) {
+                traces.remove((at: index))
             } else {
                 let trace = traces[traceName]
                 trace?.stop()
