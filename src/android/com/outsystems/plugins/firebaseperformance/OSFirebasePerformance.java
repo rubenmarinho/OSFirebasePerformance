@@ -92,7 +92,7 @@ public class OSFirebasePerformance extends CordovaPlugin {
         }
         Trace trace = traces.get(traceName);
         trace.stop();
-        traces.remove(tracename);
+        traces.remove(traceName);
     }
 
     private void addTraceAttribute(JSONArray args, CallbackContext callbackContext) {
