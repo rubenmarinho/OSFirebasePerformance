@@ -23,17 +23,12 @@ public class OSFirebasePerformance extends CordovaPlugin {
     private final static String KEY_ACTION_REMOVE_TRACE_ATTRIBUTE = "removeTraceAttribute";
     private final static String KEY_ACTION_INCREMENT_METRIC = "incrementMetric";
     private final static String KEY_ACTION_SET_PERFORMANCE_COLLECTION_ENABLED = "setPerformanceCollectionEnabled";    
-    private final static String KEY_ACTION_SET_TEST = "test";
 
     private Map<String, Trace> traces = new HashMap<String, Trace>();
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals(KEY_ACTION_SET_TEST)) {            
-           this.test(args, callbackContext);
-           return true;
-        }            
-        else if (action.equals(KEY_ACTION_START_TRACE)) {
+        if (action.equals(KEY_ACTION_START_TRACE)) {
             this.startTrace(args, callbackContext);
             return true;
         }
@@ -159,31 +154,5 @@ public class OSFirebasePerformance extends CordovaPlugin {
             return;
         }
         FirebasePerformance.getInstance().setPerformanceCollectionEnabled(enabled);
-    }
-
-    private String test(JSONArray args, CallbackContext callbackContext) {
-        String traceName = null;
-        Trace trace = null;
-        try {
-            traceName = args.getString(0);
-            Log.e("traceName", args.getString(0));
-        } catch (JSONException e) {
-            Log.e("StartTrace", e.toString());
-            return e.toString();
-        }
-        
-        if(!traceName.isEmpty()){
-            if(traces.containsKey(traceName)){
-                trace = traces.get(traceName);
-                return traceName;
-            }
-            else{
-                return "empty";
-            }
-        }
-        else
-        {
-            return "A";
-        }
     }
 }
