@@ -72,7 +72,6 @@ public class OSFirebasePerformance extends CordovaPlugin {
         if(!traceName.isEmpty()){
             if(traces.containsKey(traceName)){
                 trace = traces.get(traceName);
-                trace = FirebasePerformance.getInstance().newTrace(traceName);
             }
             else{
                 trace = FirebasePerformance.getInstance().newTrace(traceName);
