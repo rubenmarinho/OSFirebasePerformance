@@ -67,12 +67,10 @@ public class OSFirebasePerformance extends CordovaPlugin {
         if(!traceName.isEmpty()){
             if(traces.containsKey(traceName)){
                 trace = traces.get(traceName);
-                Log.e("FirebasePerformance_1", traceName);
             }
             else{
                 trace = FirebasePerformance.getInstance().newTrace(traceName);
                 traces.put(traceName, trace);
-                Log.e("FirebasePerformance_2", traceName);
             }
             trace.start();
         }
@@ -86,16 +84,8 @@ public class OSFirebasePerformance extends CordovaPlugin {
             Log.e("StopTrace", e.toString());
             return;
         }
-        Log.e("FirebasePerformance_stop", traceName);
         Trace trace = traces.get(traceName);
         trace.stop();
-        
-        try {
-            Trace trace1 = traces.get(traceName);
-        } catch (Exception e){
-            Log.e("FirebasePerformance_stop_2", traceName);
-            return;
-        }
     }
 
     private void addTraceAttribute(JSONArray args, CallbackContext callbackContext) {
