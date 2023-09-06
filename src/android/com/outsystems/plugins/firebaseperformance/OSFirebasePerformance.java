@@ -92,7 +92,7 @@ public class OSFirebasePerformance extends CordovaPlugin {
         
         try {
             Trace trace1 = traces.get(traceName);
-        } catch {
+        } catch (Exception e){
             Log.e("FirebasePerformance_stop_2", traceName);
             return;
         }
