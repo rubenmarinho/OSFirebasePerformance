@@ -13,22 +13,19 @@ class FirebasePerformancePlugin {
     
     func starTrace(traceName: String){
         if !traceName.isEmpty {
-            if let trace = traces[traceName] {
-                trace.start()
-            } else {
-                let trace = Performance.startTrace(name: traceName)
-                traces[traceName] = trace
-            }
+            let trace = Performance.startTrace(name: traceName)
+            traces[traceName] = trace
         }
     }
     
     func stopTrace(traceName: String) {
         if !traceName.isEmpty {
-            if let trace = traces[traceName] {
+            let trace = traces[traceName]
+            if (trace !== nil)
+            {
                 trace.stop()
-            } else {
-                let trace = traces[traceName]
-                trace?.stop()
+                let index = traces.firstIndex(of: traceName)
+                traces.remove((at: index)
             }
         }
     }
