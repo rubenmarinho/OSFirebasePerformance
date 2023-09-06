@@ -64,7 +64,7 @@ public class OSFirebasePerformance extends CordovaPlugin {
             Log.e("StartTrace", e.toString());
             return;
         }
-        
+        Log.e("StartTrace", traceName);
         if(!traceName.isEmpty()){
             if(traces.containsKey(traceName)){
                 trace = traces.get(traceName);
