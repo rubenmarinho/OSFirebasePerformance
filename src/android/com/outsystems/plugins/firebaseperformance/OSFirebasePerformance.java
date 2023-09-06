@@ -65,13 +65,8 @@ public class OSFirebasePerformance extends CordovaPlugin {
             return;
         }
         if(!traceName.isEmpty()){
-            if(traces.containsKey(traceName)){
-                trace = traces.get(traceName);
-            }
-            else{
-                trace = FirebasePerformance.getInstance().newTrace(traceName);
-                traces.put(traceName, trace);
-            }
+            trace = FirebasePerformance.getInstance().newTrace(traceName);
+            traces.put(traceName, trace);
             trace.start();
         }
     }
